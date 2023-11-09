@@ -1,12 +1,12 @@
 package yatzyGameCategories.Impl.specialCategories;
 
-import yatzyGameCategories.famillyCategories.DoublonsFamilyCategory;
+import yatzyGameCategories.famillyCategories.UpletFamilyCategory;
 
 import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class FullHouseGameCategory extends DoublonsFamilyCategory {
+public class FullHouseGameCategory extends UpletFamilyCategory {
     @Override
     public int calculateScore(List<Integer> dices) {
         List<Integer> allDoublons = dices.stream()

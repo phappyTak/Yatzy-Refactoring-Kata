@@ -1,10 +1,10 @@
 package yatzyGameCategories.Impl.upletFamilyCategories;
 
-import yatzyGameCategories.famillyCategories.DoublonsFamilyCategory;
+import yatzyGameCategories.famillyCategories.UpletFamilyCategory;
 
 import java.util.List;
 
-public class TwoPairsGameCategory extends DoublonsFamilyCategory {
+public class TwoPairsGameCategory extends UpletFamilyCategory {
     @Override
     public int calculateScore(List<Integer> dices) {
         List<Integer> allDoublons = getDuplicatesList(dices, 2);

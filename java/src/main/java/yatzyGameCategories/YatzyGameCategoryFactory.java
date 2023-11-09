@@ -42,7 +42,7 @@ public class YatzyGameCategoryFactory {
                 yatzyCategory = new ThreeOfKindGameCategory();
                 break;
             case FOUR_OF_KIND:
-                yatzyCategory = new FourOfKingGameCategory();
+                yatzyCategory = new FourOfKindGameCategory();
                 break;
             case SMALL_STRAIGHT:
                 yatzyCategory = new SmallStraightGameCategory();
