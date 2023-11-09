@@ -1,32 +1,37 @@
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import yatzyGameCategories.YatzyCategoryEnum;
-import yatzyGameCategories.YatzyCategory;
-import yatzyGameCategories.YatzyGameCategoryFactory;
+import yatzy.yatzyGameCategories.YatzyCategory;
+import yatzy.yatzyGameCategories.YatzyScoringStrategy;
+import yatzy.yatzyGameCategories.YatzyGameScoringFactory;
 
 import java.util.*;
 
 public class YatzyGame {
     private static final Logger slf4jLogger = LoggerFactory.getLogger(YatzyGame.class);
-    private List<Integer> dices;
-    private YatzyCategory yatzyCategory;
+    public static YatzyCategory yatzyCategory = YatzyCategory.getRandomYatzyCategory();
+    YatzyScoringStrategy yatzyScoringStrategy =  YatzyGameScoringFactory.getYatzyGame(yatzyCategory);
 
-    public YatzyGame(int d1, int d2, int d3, int d4, int d5, YatzyCategoryEnum yatzyCategoryEnum)
+    public int calculateScore(List<Integer> dices)
     {
-        slf4jLogger.error("Start the Game");
-        dices = new ArrayList<>();
-        dices.add(d1);
-        dices.add(d2);
-        dices.add(d3);
-        dices.add(d4);
-        dices.add(d5);
-        yatzyCategory = YatzyGameCategoryFactory.getYatzyGame(yatzyCategoryEnum);
-
+        return yatzyScoringStrategy.calculateScore(dices);
     }
 
-    public int calculateScore()
-    {
-        return yatzyCategory.calculateScore(dices);
+
+    public static void main (String[] args) {
+        slf4jLogger.info("Start the Game");
+        slf4jLogger.info("Yatzy Category {}", yatzyCategory);
+
+        List<Integer> dices = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            int randomNumber = new Random().nextInt(6 - 1) + 1;
+            dices.add(randomNumber);
+        }
+        slf4jLogger.info("dices used for the game {}", dices);
+
+        slf4jLogger.info("Score calculation ...");
+        int score  = new YatzyGame().calculateScore(dices);
+        slf4jLogger.info("Game Score {}", score);
+
     }
 }
 
